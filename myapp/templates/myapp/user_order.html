@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %} Заказы пользователя: {{ user.name }} {% endblock %}
+
+{% block context %}
+    <h2>Заказы пользователя {{ user.name }} за первую неделю (любого года):</h2>
+        <table>
+            {% for order in orders %}
+                <tr>
+                    <td>{{ order.get_order_week }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+
+    <h2>Заказы пользователя {{ user.name }} за месяц - Январь (2008):</h2>
+        <table>
+            {% for order in orders %}
+                <tr>
+                    <td>{{ order.get_order_month }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+
+    <h2>Заказы пользователя {{ user.name }} за 2008 год:</h2>
+        <table>
+            {% for order in orders %}
+                <tr>
+                    <td>{{ order.get_order_year }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+
+    <h2>Заказы пользователя {{ user.name }} за всё время:</h2>
+    <table>
+        {% for order in orders %}
+            <tr>
+                <td>{{ order.get_order_all_time }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
